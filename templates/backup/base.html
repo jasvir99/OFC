@@ -1,0 +1,97 @@
+
+
+{% load i18n %}
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="{{ LOCAL_URL }}/builtystatic/slider/playing/js/jquery.slides.min.js"></script>
+      <!--  <link rel="stylesheet" href="{{ LOCAL_URL }}/builtystatic/slider/playing/style.css" /> -->
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <script type="text/javascript" src="{{ LOCAL_URL }}/builtystatic/js/jquery.js"></script>
+        <script type="text/javascript" src="{{ LOCAL_URL }}/builtystatic/js/menu.js"></script>
+        <link rel="stylesheet" href="{{ LOCAL_URL }}/builtystatic/jquery-ui-1.10.3.custom/development-bundle/themes/overcast/jquery.ui.all.css">
+        <script src="{{ LOCAL_URL }}/builtystatic/jquery-ui-1.10.3.custom/development-bundle/jquery-1.9.1.js"></script>
+        <script src="{{ LOCAL_URL }}/builtystatic/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.core.js"></script>
+        <script src="{{ LOCAL_URL }}/builtystatic/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.widget.js"></script>
+        <script src="{{ LOCAL_URL }}/builtystatic/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.button.js"></script>
+        <script src="{{ LOCAL_URL }}/builtystatic/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.effect.js"></script>
+        <script src="{{ LOCAL_URL }}/builtystatic/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.effect-clip.js"></script>
+        <script src="{{ LOCAL_URL }}/builtystatic/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.datepicker.js"></script>
+        <script>
+            $(function() {
+                  $('#slides').slidesjs({
+                    width: 940,
+                    height: 400,
+                    play: {
+                      active: true,
+                      auto: true,
+                      interval: 4000,
+                      swap: true
+                    }
+                  });
+                });
+            
+            $(function() {
+            $( "#id_date" ).datepicker({
+            
+            changeMonth: true,
+            changeYear: true,dateFormat:'yy-mm-dd'
+            });
+            $( "#id_date" ).datepicker( "option", "showAnim", 'clip' );
+            });
+            
+            $(function() {
+            		$( "button" )
+            			.button()
+            			.click(function( event ) {
+            				event.preventDefault();
+            			});
+            	});
+              
+        </script> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta charset="utf-8"/>
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Builty Maker</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ LOCAL_URL }}/builtystatic/css/main.css" />
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    </head>
+    <body>
+        {% block nav-main %}
+        <div class="wrap">
+            <div id="logo">
+                <h1><a href="/builty/" title="Home">Open Freight Carriers</a></h1>
+            </div>
+            <div id="options">
+                <h3><a href="/builty/accounts/password/change/" data-role="button">{% trans 'Change Password' %}</a></h3>
+                <h3><a href="/builty/accounts/logout">{% trans 'Log out' %}</a></h3>
+            </div>
+            <ul id="nav">
+                <li>
+                    <h3><a href="/builty/main/newconsignment/"  accesskey="n"><span class="akey">N</span>ew Consignment</a></h3>
+                </li>
+                <li>
+                    <h3><a href="/builty/main/cons_register/" accesskey="c"><span class="akey">C</span>onsignment Register</a></h3>
+                </li>
+                <li>
+                    <h3><a href="/builty/main/prev_cons/" accesskey="p"><span class="akey">P</span>revious Consignment</a></h3>
+                </li>
+            </ul>
+        </div>
+        <!-- /menu -->
+        {% endblock %}
+        {% block columnwrap %}
+        <div class="wrap">
+            {% block content %}
+            {% endblock %}
+        </div>
+        {% endblock %}
+        <!-- END content -->
+    </body>
+</html>
+
+

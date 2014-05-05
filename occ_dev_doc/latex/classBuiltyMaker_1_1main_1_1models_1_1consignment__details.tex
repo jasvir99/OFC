@@ -1,0 +1,110 @@
+\hypertarget{classBuiltyMaker_1_1main_1_1models_1_1consignment__details}{\section{\-Builty\-Maker.\-main.\-models.\-consignment\-\_\-details \-Class \-Reference}
+\label{classBuiltyMaker_1_1main_1_1models_1_1consignment__details}\index{\-Builty\-Maker.\-main.\-models.\-consignment\-\_\-details@{\-Builty\-Maker.\-main.\-models.\-consignment\-\_\-details}}
+}
+\subsection*{\-Static \-Public \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a836e713d3be57d2a36dde43af620cf79}{account\-\_\-of} = models.\-Foreign\-Key(\hyperlink{classBuiltyMaker_1_1main_1_1models_1_1account}{account})
+\item 
+tuple \hyperlink{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_abb946a891b10bb6a745c6a8a5198643e}{consigner} = models.\-Char\-Field(max\-\_\-length = 100)
+\item 
+tuple \hyperlink{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_aca0fbcb3105b4042753b278aa66c43f0}{consigner\-\_\-tin} = models.\-Char\-Field(max\-\_\-length = 20)
+\item 
+tuple \hyperlink{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_ad76b21f6dd24ac52f32e0385d305f76e}{consignee} = models.\-Char\-Field(max\-\_\-length = 100)
+\item 
+tuple \hyperlink{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_ace108159717cbbe73325079d33739941}{consignee\-\_\-tin} = models.\-Char\-Field(max\-\_\-length = 20)
+\item 
+tuple \hyperlink{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a7b75b8a9f2cf74bc0e4f1e07c6b9307b}{source} = models.\-Char\-Field(max\-\_\-length = 30)
+\item 
+tuple \hyperlink{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a31b1ba1d6542618893fa90bdebc38b05}{destination} = models.\-Char\-Field(max\-\_\-length = 30)
+\item 
+tuple \hyperlink{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_ab853f7c1e87ee2cdae5f92f9b50fc12f}{number\-\_\-of\-\_\-pkgs} = models.\-Integer\-Field(max\-\_\-length = 10)
+\item 
+tuple \hyperlink{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a0a91fb729501749bb4346369615d69a0}{item\-\_\-description} = models.\-Char\-Field(max\-\_\-length = 200,blank=\-True)
+\item 
+tuple \hyperlink{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a6dc58708b951d054a7bb2641e59dd4f3}{private\-\_\-mark} = models.\-Char\-Field(max\-\_\-length = 100,blank=\-True, default = \char`\"{}\-N\-A\char`\"{})
+\item 
+tuple \hyperlink{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_aa3e819402fd8d98cb6b6803ce4c2fa75}{invoice\-\_\-no} = models.\-Char\-Field(max\-\_\-length = 20, default = \char`\"{}\-N\-A\char`\"{})
+\item 
+tuple \hyperlink{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a49683e5a98ebcbfb52f5c8b09b033076}{date} = models.\-Date\-Field()
+\item 
+tuple \hyperlink{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a4c34f0cabea2f6020919637c53d340be}{invoice\-\_\-value} = models.\-Char\-Field(max\-\_\-length = 30, default = \char`\"{}\-N\-A\char`\"{})
+\item 
+tuple \hyperlink{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_aaa99df3a22fe6a22684f5e135aba25e5}{actual\-\_\-weight\-\_\-in\-\_\-kg} = models.\-Float\-Field()
+\item 
+tuple \hyperlink{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_afafd9ef2fa60a8619f1d20d0395d3735}{charged\-\_\-weight\-\_\-in\-\_\-kg} = models.\-Float\-Field()
+\item 
+tuple \hyperlink{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_afe8f2f7e5eea040ed543b42bb9c58d3b}{service\-\_\-tax\-\_\-paid\-\_\-by} = models.\-Char\-Field(max\-\_\-length = 40,blank=\-True)
+\item 
+tuple \hyperlink{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a011dc16c7d9620e67d1f2cd4fae63016}{mode\-\_\-of\-\_\-transfer} = models.\-Foreign\-Key(\hyperlink{classBuiltyMaker_1_1main_1_1models_1_1transfer__mode}{transfer\-\_\-mode})
+\item 
+tuple \hyperlink{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a98af015be664e6ee397ac2dcf44cee37}{status} = models.\-Foreign\-Key(\hyperlink{classBuiltyMaker_1_1main_1_1models_1_1dispatch__status}{dispatch\-\_\-status})
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\begin{DoxyVerb}
+    ** Model for details of consignment **
+\end{DoxyVerb}
+ 
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a836e713d3be57d2a36dde43af620cf79}{\index{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}!account\-\_\-of@{account\-\_\-of}}
+\index{account\-\_\-of@{account\-\_\-of}!BuiltyMaker::main::models::consignment_details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}}
+\subsubsection[{account\-\_\-of}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf \-Builty\-Maker\-::main\-::models.\-consignment\-\_\-details\-::account\-\_\-of} = models.\-Foreign\-Key({\bf account})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a836e713d3be57d2a36dde43af620cf79}
+\hypertarget{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_aaa99df3a22fe6a22684f5e135aba25e5}{\index{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}!actual\-\_\-weight\-\_\-in\-\_\-kg@{actual\-\_\-weight\-\_\-in\-\_\-kg}}
+\index{actual\-\_\-weight\-\_\-in\-\_\-kg@{actual\-\_\-weight\-\_\-in\-\_\-kg}!BuiltyMaker::main::models::consignment_details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}}
+\subsubsection[{actual\-\_\-weight\-\_\-in\-\_\-kg}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf \-Builty\-Maker\-::main\-::models.\-consignment\-\_\-details\-::actual\-\_\-weight\-\_\-in\-\_\-kg} = models.\-Float\-Field()\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_aaa99df3a22fe6a22684f5e135aba25e5}
+\hypertarget{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_afafd9ef2fa60a8619f1d20d0395d3735}{\index{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}!charged\-\_\-weight\-\_\-in\-\_\-kg@{charged\-\_\-weight\-\_\-in\-\_\-kg}}
+\index{charged\-\_\-weight\-\_\-in\-\_\-kg@{charged\-\_\-weight\-\_\-in\-\_\-kg}!BuiltyMaker::main::models::consignment_details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}}
+\subsubsection[{charged\-\_\-weight\-\_\-in\-\_\-kg}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf \-Builty\-Maker\-::main\-::models.\-consignment\-\_\-details\-::charged\-\_\-weight\-\_\-in\-\_\-kg} = models.\-Float\-Field()\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_afafd9ef2fa60a8619f1d20d0395d3735}
+\hypertarget{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_ad76b21f6dd24ac52f32e0385d305f76e}{\index{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}!consignee@{consignee}}
+\index{consignee@{consignee}!BuiltyMaker::main::models::consignment_details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}}
+\subsubsection[{consignee}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf \-Builty\-Maker\-::main\-::models.\-consignment\-\_\-details\-::consignee} = models.\-Char\-Field(max\-\_\-length = 100)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_ad76b21f6dd24ac52f32e0385d305f76e}
+\hypertarget{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_ace108159717cbbe73325079d33739941}{\index{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}!consignee\-\_\-tin@{consignee\-\_\-tin}}
+\index{consignee\-\_\-tin@{consignee\-\_\-tin}!BuiltyMaker::main::models::consignment_details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}}
+\subsubsection[{consignee\-\_\-tin}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf \-Builty\-Maker\-::main\-::models.\-consignment\-\_\-details\-::consignee\-\_\-tin} = models.\-Char\-Field(max\-\_\-length = 20)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_ace108159717cbbe73325079d33739941}
+\hypertarget{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_abb946a891b10bb6a745c6a8a5198643e}{\index{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}!consigner@{consigner}}
+\index{consigner@{consigner}!BuiltyMaker::main::models::consignment_details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}}
+\subsubsection[{consigner}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf \-Builty\-Maker\-::main\-::models.\-consignment\-\_\-details\-::consigner} = models.\-Char\-Field(max\-\_\-length = 100)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_abb946a891b10bb6a745c6a8a5198643e}
+\hypertarget{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_aca0fbcb3105b4042753b278aa66c43f0}{\index{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}!consigner\-\_\-tin@{consigner\-\_\-tin}}
+\index{consigner\-\_\-tin@{consigner\-\_\-tin}!BuiltyMaker::main::models::consignment_details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}}
+\subsubsection[{consigner\-\_\-tin}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf \-Builty\-Maker\-::main\-::models.\-consignment\-\_\-details\-::consigner\-\_\-tin} = models.\-Char\-Field(max\-\_\-length = 20)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_aca0fbcb3105b4042753b278aa66c43f0}
+\hypertarget{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a49683e5a98ebcbfb52f5c8b09b033076}{\index{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}!date@{date}}
+\index{date@{date}!BuiltyMaker::main::models::consignment_details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}}
+\subsubsection[{date}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf \-Builty\-Maker\-::main\-::models.\-consignment\-\_\-details\-::date} = models.\-Date\-Field()\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a49683e5a98ebcbfb52f5c8b09b033076}
+\hypertarget{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a31b1ba1d6542618893fa90bdebc38b05}{\index{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}!destination@{destination}}
+\index{destination@{destination}!BuiltyMaker::main::models::consignment_details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}}
+\subsubsection[{destination}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf \-Builty\-Maker\-::main\-::models.\-consignment\-\_\-details\-::destination} = models.\-Char\-Field(max\-\_\-length = 30)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a31b1ba1d6542618893fa90bdebc38b05}
+\hypertarget{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_aa3e819402fd8d98cb6b6803ce4c2fa75}{\index{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}!invoice\-\_\-no@{invoice\-\_\-no}}
+\index{invoice\-\_\-no@{invoice\-\_\-no}!BuiltyMaker::main::models::consignment_details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}}
+\subsubsection[{invoice\-\_\-no}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf \-Builty\-Maker\-::main\-::models.\-consignment\-\_\-details\-::invoice\-\_\-no} = models.\-Char\-Field(max\-\_\-length = 20, default = \char`\"{}\-N\-A\char`\"{})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_aa3e819402fd8d98cb6b6803ce4c2fa75}
+\hypertarget{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a4c34f0cabea2f6020919637c53d340be}{\index{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}!invoice\-\_\-value@{invoice\-\_\-value}}
+\index{invoice\-\_\-value@{invoice\-\_\-value}!BuiltyMaker::main::models::consignment_details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}}
+\subsubsection[{invoice\-\_\-value}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf \-Builty\-Maker\-::main\-::models.\-consignment\-\_\-details\-::invoice\-\_\-value} = models.\-Char\-Field(max\-\_\-length = 30, default = \char`\"{}\-N\-A\char`\"{})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a4c34f0cabea2f6020919637c53d340be}
+\hypertarget{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a0a91fb729501749bb4346369615d69a0}{\index{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}!item\-\_\-description@{item\-\_\-description}}
+\index{item\-\_\-description@{item\-\_\-description}!BuiltyMaker::main::models::consignment_details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}}
+\subsubsection[{item\-\_\-description}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf \-Builty\-Maker\-::main\-::models.\-consignment\-\_\-details\-::item\-\_\-description} = models.\-Char\-Field(max\-\_\-length = 200,blank=\-True)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a0a91fb729501749bb4346369615d69a0}
+\hypertarget{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a011dc16c7d9620e67d1f2cd4fae63016}{\index{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}!mode\-\_\-of\-\_\-transfer@{mode\-\_\-of\-\_\-transfer}}
+\index{mode\-\_\-of\-\_\-transfer@{mode\-\_\-of\-\_\-transfer}!BuiltyMaker::main::models::consignment_details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}}
+\subsubsection[{mode\-\_\-of\-\_\-transfer}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf \-Builty\-Maker\-::main\-::models.\-consignment\-\_\-details\-::mode\-\_\-of\-\_\-transfer} = models.\-Foreign\-Key({\bf transfer\-\_\-mode})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a011dc16c7d9620e67d1f2cd4fae63016}
+\hypertarget{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_ab853f7c1e87ee2cdae5f92f9b50fc12f}{\index{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}!number\-\_\-of\-\_\-pkgs@{number\-\_\-of\-\_\-pkgs}}
+\index{number\-\_\-of\-\_\-pkgs@{number\-\_\-of\-\_\-pkgs}!BuiltyMaker::main::models::consignment_details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}}
+\subsubsection[{number\-\_\-of\-\_\-pkgs}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf \-Builty\-Maker\-::main\-::models.\-consignment\-\_\-details\-::number\-\_\-of\-\_\-pkgs} = models.\-Integer\-Field(max\-\_\-length = 10)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_ab853f7c1e87ee2cdae5f92f9b50fc12f}
+\hypertarget{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a6dc58708b951d054a7bb2641e59dd4f3}{\index{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}!private\-\_\-mark@{private\-\_\-mark}}
+\index{private\-\_\-mark@{private\-\_\-mark}!BuiltyMaker::main::models::consignment_details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}}
+\subsubsection[{private\-\_\-mark}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf \-Builty\-Maker\-::main\-::models.\-consignment\-\_\-details\-::private\-\_\-mark} = models.\-Char\-Field(max\-\_\-length = 100,blank=\-True, default = \char`\"{}\-N\-A\char`\"{})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a6dc58708b951d054a7bb2641e59dd4f3}
+\hypertarget{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_afe8f2f7e5eea040ed543b42bb9c58d3b}{\index{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}!service\-\_\-tax\-\_\-paid\-\_\-by@{service\-\_\-tax\-\_\-paid\-\_\-by}}
+\index{service\-\_\-tax\-\_\-paid\-\_\-by@{service\-\_\-tax\-\_\-paid\-\_\-by}!BuiltyMaker::main::models::consignment_details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}}
+\subsubsection[{service\-\_\-tax\-\_\-paid\-\_\-by}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf \-Builty\-Maker\-::main\-::models.\-consignment\-\_\-details\-::service\-\_\-tax\-\_\-paid\-\_\-by} = models.\-Char\-Field(max\-\_\-length = 40,blank=\-True)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_afe8f2f7e5eea040ed543b42bb9c58d3b}
+\hypertarget{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a7b75b8a9f2cf74bc0e4f1e07c6b9307b}{\index{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}!source@{source}}
+\index{source@{source}!BuiltyMaker::main::models::consignment_details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}}
+\subsubsection[{source}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf \-Builty\-Maker\-::main\-::models.\-consignment\-\_\-details\-::source} = models.\-Char\-Field(max\-\_\-length = 30)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a7b75b8a9f2cf74bc0e4f1e07c6b9307b}
+\hypertarget{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a98af015be664e6ee397ac2dcf44cee37}{\index{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}!status@{status}}
+\index{status@{status}!BuiltyMaker::main::models::consignment_details@{\-Builty\-Maker\-::main\-::models\-::consignment\-\_\-details}}
+\subsubsection[{status}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf \-Builty\-Maker\-::main\-::models.\-consignment\-\_\-details\-::status} = models.\-Foreign\-Key({\bf dispatch\-\_\-status})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classBuiltyMaker_1_1main_1_1models_1_1consignment__details_a98af015be664e6ee397ac2dcf44cee37}
+
+
+\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+main/\hyperlink{models_8py}{models.\-py}\end{DoxyCompactItemize}

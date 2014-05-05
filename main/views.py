@@ -1,0 +1,251 @@
+# Create your views here.
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render_to_response, get_object_or_404
+from BuiltyMaker.main.models import *
+from django.template import *
+from django.core.urlresolvers import reverse
+from django.template import RequestContext
+from django.contrib.auth.decorators import login_required
+from django.db.models import Max ,Q, Sum
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.sessions.models import Session
+from django.shortcuts import render
+from django.db.models import F
+from django import template
+from tagging.models import Tag, TaggedItem
+from django.core.mail import send_mail
+import datetime
+
+def index(request):
+	""" This view takes accept index request and return respect page. 
+			If user is active then it returns index.html and return index1.html
+			otherwise.""" 
+	if request.user.is_active == 1:
+		return render_to_response('main/index.html')
+	else:
+		return render_to_response('main/index1.html')
+
+def new_consignment(request):
+	""" This view is used to handel new consignment request. """
+	if request.user.is_active == 1:
+		if request.method == 'POST':
+			form = consignmentForm(request.POST)
+			if form.is_valid():
+				cd = form.cleaned_data
+				consigner = cd['consigner']
+				consigner_tin = cd['consigner_tin']
+				consignee = cd['consignee']
+				consignee_tin = cd['consignee_tin']
+				source = cd['source']
+				destination = cd['destination']
+				number_of_pkgs = cd['number_of_pkgs']
+				item_description = cd['item_description']
+				private_mark = cd['private_mark']
+				invoice_no = cd['invoice_no']
+				date = cd['date']
+				invoice_value = cd['invoice_value']
+				actual_weight_in_kg = cd['actual_weight_in_kg']
+				charged_weight_in_kg = cd['charged_weight_in_kg']
+				mode = cd['mode_of_transfer']
+				account = cd['account_of']
+				service_tax_paid_by = cd['service_tax_paid_by']
+				id = dispatch_status.objects.aggregate(Max('id'))
+				dispatch = dispatch_status()
+				dispatch.save()
+				status_id = id['id__max'] + 1
+				status = dispatch_status.objects.get(id = status_id)
+				save = consignment_details(account_of = account, mode_of_transfer = mode,
+				consigner = consigner ,consigner_tin = consigner_tin,
+				consignee =  consignee, consignee_tin = consignee_tin,
+				source = source, destination = destination, number_of_pkgs
+				= number_of_pkgs, item_description = item_description,
+				private_mark = private_mark, invoice_no = invoice_no,
+				date = date, invoice_value = invoice_value,
+				actual_weight_in_kg = actual_weight_in_kg, status = status,
+				charged_weight_in_kg = 	charged_weight_in_kg,
+				service_tax_paid_by = service_tax_paid_by)
+				save.save()
+				id = consignment_details.objects.aggregate(Max('id'))
+				cons_id = id['id__max']
+				temp = {'cons_id':cons_id}
+				return render_to_response('main/cons_ok.html',
+				dict(temp.items()), context_instance=RequestContext(request))
+			else:
+				return render_to_response('main/invalid_form.html')
+		else:
+			form = consignmentForm()
+			temp = {'form':form}
+			return render_to_response('main/new_consignment.html',
+			dict(temp.items()), context_instance=RequestContext(request))
+	else :
+			return render_to_response('main/index1.html')
+
+def add_payment(request):
+	""" After adding new consignment, this module is used to add payment details.
+			It uses consignment id using GET method and add payment details for that
+			consignment."""
+	if request.user.is_active == 1:
+		if request.method == 'POST':
+			form = paymentDetailsForm(request.POST)
+			if form.is_valid():
+				cons_id = request.GET.get('q', '')
+				cd = form.cleaned_data
+				freight_mode = cd['freight_mode']
+				billing_station = cd['billing_station']
+				amount_to_pay = cd['amount_to_pay']
+				amount_paid = cd['amount_paid']
+				cheque_or_dd_no = cd['cheque_or_dd_no']
+				save = payment_details( billing_station = billing_station,
+			    amount_paid = amount_paid, cheque_or_dd_no = cheque_or_dd_no,
+				amount_to_pay = amount_to_pay, freight_mode = freight_mode)
+				save.save()
+				id = payment_details.objects.aggregate(Max('id'))
+				pay_id = id['id__max']
+				temp = {'pay_id':pay_id,'cons_id':cons_id}
+				return render_to_response('main/pay_ok.html',
+				dict(temp.items()), context_instance=RequestContext(request))
+			else:
+				return render_to_response('main/invalid_form.html')
+		else:
+			form = paymentDetailsForm()
+			temp = {'form': form}
+			return render_to_response('main/add_payment.html',
+			dict(temp.items()), context_instance=RequestContext(request))
+	else:
+		return render_to_response('main/index1.html')
+
+def add_freight(request):
+	""" This view is used to add freight details. It recieves consignment id using
+			GET method and add freight details for that consignment."""
+	if request.user.is_active == 1:
+		if request.method == 'POST':
+			form = freightDetailsForm(request.POST)
+			if form.is_valid():
+				cd = form.cleaned_data
+				basic_freight = cd['basic_freight']
+				barrier_charges = cd['barrier_charges']
+				hamali_charges = cd['hamali_charges']
+				stationary_charges = cd['stationary_charges']
+				other_charges = cd['other_charges']
+				id = fixed_values.objects.aggregate(Max('id'))
+				s_tax = id['id__max']
+				s_tax_value = fixed_values.objects.values_list('serviceTax').\
+				filter(id=s_tax)
+				for value in s_tax_value:
+					for entry in value:
+						fixed_tax = entry
+				total = basic_freight + barrier_charges + hamali_charges + \
+				stationary_charges + other_charges
+				total_service_tax = (total * fixed_tax) / 100
+				grand_total = total + total_service_tax
+				cons = consignment_details.objects.get(id=request.GET.get('c', ''))
+				pay = payment_details.objects.get(id = request.GET.get('p', ''))
+				save = freight_details(cons = cons, pay = pay, basic_freight
+				= basic_freight, barrier_charges = barrier_charges,
+				hamali_charges = hamali_charges, stationary_charges =
+				stationary_charges, other_charges = other_charges,
+				service_tax = total_service_tax, total = total, grand_total
+				= grand_total)
+				save.save()
+				id = freight_details.objects.aggregate(Max('id'))
+				freight_id = id['id__max']
+				temp = {'consignment':freight_id}
+				return render_to_response('main/freight_ok.html',
+				dict(temp.items()),context_instance=RequestContext(request))
+			else:
+				return render_to_response('main/invalid_form.html')
+		else:
+			form = freightDetailsForm()
+			temp = {'form':form}
+			return render_to_response('main/add_freight.html',
+			dict(temp.items()),context_instance=RequestContext(request))
+	else:
+		return render_to_response('main/index1.html')
+
+def generate_builty(request):
+	""" After adding all detailsm this module generates final consignment note or
+			what we call builty."""
+	if request.user.is_active == 1:
+		query = request.GET.get('q', '')
+		fixed_id = fixed_values.objects.aggregate(Max('id'))
+		fixed_value_id = fixed_id['id__max']
+		values = fixed_values.objects.values('title','owner').get(id = fixed_value_id)
+		cons= freight_details.objects.values('cons_id').get(id=query)
+		pay = freight_details.objects.values('pay_id').get(id=query)
+		details = freight_details.objects.values('cons__id','cons__consigner'
+		,'cons__consigner_tin','cons__consignee','cons__consignee_tin',
+		'cons__source','cons__destination','cons__date','cons__number_of_pkgs',
+		'cons__invoice_value','cons__item_description','cons__actual_weight_in_kg'
+		,'cons__charged_weight_in_kg','cons__service_tax_paid_by',
+		'cons__private_mark','basic_freight','hamali_charges','barrier_charges'
+		,'stationary_charges','other_charges','total','service_tax','grand_total'
+		,'pay__freight_mode__mode').get(id=query)
+		temp = {'details': details,'values': values}
+		return render_to_response('main/gen_builty.html',
+		dict(temp.items()), context_instance=RequestContext(request))
+	else:
+		return render_to_response('main/index1.html')
+
+def consignment_register(request):
+	""" This module is used to generate consignment register where all previous 
+			consignments are registered. """
+	if request.user.is_active == 1:
+		cons = freight_details.objects.values('cons_id').all()
+		pay = freight_details.objects.values('pay_id').all()
+		details = freight_details.objects.values('cons__id','cons__consigner',
+		'cons__consigner_tin','cons__consignee','cons__consignee_tin',
+		'cons__date','cons__source','cons__destination','cons',
+		'cons__status__status','cons__status__date','cons__account_of__account'
+		,'cons__number_of_pkgs','cons__actual_weight_in_kg',
+		'cons__charged_weight_in_kg','cons__item_description',
+		'pay__amount_to_pay','pay__amount_paid').all()
+		temp = {'consignment': details}
+		return render_to_response('main/cons_register.html',
+		dict(temp.items()),context_instance=RequestContext(request))
+	else:
+		return render_to_response('main/index1.html')
+
+def prev_cons(request):
+	""" This modules is used to search previous consignments and generate their
+			consignment notes if required. """
+	if request.user.is_active == 1:
+		query = request.GET.get('q', '')
+		if query :
+			result = consignment_details.objects.filter(id=query)
+			temp = {'result': result, 'query': query}
+			return render_to_response('main/prev_cons.html',
+			dict(temp.items()), context_instance=RequestContext(request))
+		else:
+			result = []
+			temp = {'result':result}
+			return render_to_response('main/prev_cons.html',
+			dict(temp.items()), context_instance=RequestContext(request))
+	else:
+		return render_to_response('main/index1.html')
+
+def dispatch(request):
+	""" This modules is used to change disptach status of any consigment in consignment
+			register."""
+	if request.user.is_active == 1:
+		query = request.GET.get('q','')
+		consignment = consignment_details.objects.filter(id = query)
+		temp = {'consignment': consignment}
+		return render_to_response('main/dispatch_confirm.html',
+		dict(temp.items()),context_instance=RequestContext(request))
+	else:
+		return render_to_response('main/index1.html')
+
+def confirm_dispatch(request):
+	""" After clicking on dispatch, this module is used for confirmatin."""
+	if request.user.is_active == 1:
+		query = request.GET.get('q', '')
+		dispatch_id = consignment_details.objects.values('status_id__id').filter(id=query)
+		date = datetime.date.today()
+		status = 1
+		dispatch_status.objects.filter(id = dispatch_id).update(status = status,date = date)
+		return render_to_response('main/dispatch_ok.html')
+	else:
+		return render_to_response('main/index1.html')

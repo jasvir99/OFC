@@ -1,0 +1,140 @@
+
+
+{% load i18n %}
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ LOCAL_URL }}/builtystatic/css/note.css" />
+		</head>
+        {% block content %}
+        
+        {% if values %} 
+        <h1 align="center">{{values.title}}</h1>
+        {% endif %}
+        <h2 align="center">Consignment Note</h2>
+        <br><br>
+        <table border="1" class="main" width="99%">
+            {% if details %}
+            <tr>
+                <th align="center"><b>Consigner</b></th>
+                <th><b>Consignee</b></th>
+                <th><b>G.R No. </b>:&nbsp;{{details.cons__id}}</th>
+            </tr>
+            <tr>
+                <td><b>Name M/S </b>:&nbsp;{{details.cons__consigner}}<br><br><b>Address </b>:&nbsp;{{details.cons__source}}<br><br><b>TIN </b>:&nbsp;{{details.cons__consigner_tin}}</td>
+                <td><b>Name M/S </b>:&nbsp;{{details.cons__consignee}}<br><br><b>Address </b>:&nbsp;{{details.cons__destination}}<br><br><b>TIN </b>:&nbsp;{{details.cons__consignee_tin}}</td>
+                <td><b>Date </b>:&nbsp;{{details.cons__date}}<br><br><b>From </b>:&nbsp;{{details.cons__source}}<br><br><b>To </b>:&nbsp;{{details.cons__destination}}</td>
+            </tr>
+        </table>
+        <br><br>
+        <table border="1" class="main" width="99%">
+            <tr>
+                <th><b>Primary Details</b></th>
+                <th><b>Description</b></th>
+                <th><b>Weight</b></th>
+                <th><b>Payment Details</b></th>
+                <th><b>Other Details</b></th>
+            </tr>
+            <tr>
+                <td width="110" align="center">
+                    <table " class="inside" width="100%">
+                        <tr>
+                            <td align="center"><b>No. Of Pkgs</b></td>
+                        </tr>
+                        <tr>
+                            <td align="center"><br><br>{{details.cons__number_of_pkgs}}<br><br></td>
+                        </tr>
+                    </table>
+                    <table  class="inside" width="100%">
+                        <tr>
+                            <td align="center"><b>Invoice Value</b></td>
+                        </tr>
+                        <tr>
+                            <td align="center"><br><br>{{details.cons__invoice_value}}<br><br><br></td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="400" align="center">{{details.cons__item_description}}</td>
+                <td>
+                    <table  class="inside" width="100%">
+                        <tr>
+                            <td align="center"><b>Actual</b></td>
+                        </tr>
+                        <tr>
+                            <td align="center"><br><br>{{details.cons__actual_weight_in_kg}}&nbsp; KG<br><br><br></td>
+                        </tr>
+                    </table>
+                    <table  class="inside" width="100%">
+                        <tr>
+                            <td align="center"><b>Charged</b></td>
+                        </tr>
+                        <tr>
+                            <td align="center"><br><br>{{details.cons__charged_weight_in_kg}}&nbsp; KG<br><br></td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table  class="inside" width="80%">
+                        <tr>
+                            <td width="10"><b>Basic Freight :</b>&nbsp;{{details.basic_freight}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Hamali Charges :</b>&nbsp;{{details.hamali_charges}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Barrier Charges :</b>&nbsp;{{details.barrier_charges}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Stationary :</b>&nbsp;{{details.stationary_charges}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Any Other :</b>&nbsp;{{details.other_charges}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Total :</b>&nbsp;{{details.total}}</td>
+                        <tr>
+                            <td><b>Service Tax :</b>&nbsp;{{details.service_tax}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Grand Total :</b>&nbsp;{{freight.grand_total}}</td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table  class="inside" width="100%">
+                        <tr>
+                            <td align="center"><b>Mode Of Payment</b></td>
+                        </tr>
+                        <tr>
+                            <td align="center"><br>{{details.pay__freight_mode__mode}}<br></td>
+                        </tr>
+                    </table>
+                    <table  class="inside" width="100%">
+                        <tr>
+                            <td align="center"><b>Service Tax Paid By</b></td>
+                        </tr>
+                        <tr>
+                            <td align="center"><br>{{details.cons__service_tax_paid_by}}<br></td>
+                        </tr>
+                    </table>
+                    <table  class="inside" width="100%">
+                        <tr>
+                            <td align="center"><b>Private Mark</b></td>
+                        </tr>
+                        <tr>
+                            <td align="center"><br>{{details.cons__private_mark}}<br></td>
+                        </tr>
+                    </table>
+                </td>
+                {% endif %}
+        </table>
+        <br><br><br>
+				<div class="sign">
+        {% if values %}
+        <h4 align="right"> {{values.owner}} &nbsp;&nbsp;</h4>
+        {% endif %}
+				<p align="right">Signature</p>
+				</div>
+</html>
+{% endblock %}
+
+

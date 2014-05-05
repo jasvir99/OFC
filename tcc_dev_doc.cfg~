@@ -1,0 +1,11 @@
+PROJECT_NAME     = "OFC Automation"
+OUTPUT_DIRECTORY = tcc_dev_doc
+EXTRACT_ALL      = YES
+GENERATE_LATEX   = NO
+GENERATE_MAN     = NO
+GENERATE_RTF     = NO
+OPTIMIZE_OUTPUT_JAVA = YES
+INPUT            = settings.py urls.py main/views.py main/models.py main/admin.py
+QUIET            = YES
+JAVADOC_AUTOBRIEF = YES
+SEARCHENGINE     = NO

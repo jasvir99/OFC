@@ -1,0 +1,6 @@
+{% extends "base_site.html" %}
+{% block content %}
+<div class="error">
+<p>Invalid From entries</p>
+</div>
+{% endblock %}

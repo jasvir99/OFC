@@ -1,0 +1,33 @@
+\hypertarget{namespaceBuiltyMaker_1_1urls}{\section{\-Builty\-Maker\-:\-:urls \-Namespace \-Reference}
+\label{namespaceBuiltyMaker_1_1urls}\index{\-Builty\-Maker\-::urls@{\-Builty\-Maker\-::urls}}
+}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespaceBuiltyMaker_1_1urls_a31cc5c7ed2c5d7d3149a703899ad7312}{urlpatterns}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\begin{DoxyVerb}from django.conf.urls import patterns, include, url
+from django.conf.urls.defaults import *
+from django.views.generic import TemplateView
+from django.contrib import admin
+admin.autodiscover()
+# Uncomment the next two lines to enable the admin:
+\end{DoxyVerb}
+ 
+
+\subsection{\-Variable \-Documentation}
+\hypertarget{namespaceBuiltyMaker_1_1urls_a31cc5c7ed2c5d7d3149a703899ad7312}{\index{\-Builty\-Maker\-::urls@{\-Builty\-Maker\-::urls}!urlpatterns@{urlpatterns}}
+\index{urlpatterns@{urlpatterns}!BuiltyMaker::urls@{\-Builty\-Maker\-::urls}}
+\subsubsection[{urlpatterns}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf \-Builty\-Maker\-::urls\-::urlpatterns}}}\label{namespaceBuiltyMaker_1_1urls_a31cc5c7ed2c5d7d3149a703899ad7312}
+{\bfseries \-Initial value\-:}
+\begin{DoxyCode}
+1 patterns('',
+2     (r'^$', 'BuiltyMaker.main.views.index'),
+3     (r'^admin/', include(admin.site.urls)),
+4     (r'^accounts/', include('registration.urls')),
+5     (r'^main/', include('BuiltyMaker.main.urls')),
+6 )
+\end{DoxyCode}

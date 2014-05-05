@@ -1,0 +1,10 @@
+{% extends "base_site.html" %}
+{% load i18n %}
+
+{% block content %}
+<img src="{{ LOCAL_URL }}/builtystatic/images/silde.gif" width="460" height="305">
+{% endblock %}
+
+
+
+
